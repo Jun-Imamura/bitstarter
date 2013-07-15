@@ -46,7 +46,8 @@ var checkUrl = function(url, checksfile) {
 	    var present = $(checks[ii]).length > 0;
 	    out[checks[ii]] = present;
 	}
-	console.log(out);
+	var outJson = JSON.stringify(out, null, 4);
+	console.log(outJson);
     });
 }
 		     
@@ -77,19 +78,23 @@ var clone = function(fn){
 
 if(require.main == module){
     program
-      .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
-      .option('-f, --file <html_file>', 'URL to index.html', URL_DEFAULT)
-//      .option('-f, --file <html_file>', 'Path to index.html')
-      .option('-u, --url <html_file>', 'Link to url', clone(assertFileExists), HTMLFILE_DEFAULT)
+//      .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
+//      .option('-f, --file <html_file>', 'URL to index.html', HTMLFILE_DEFAULT)
+      .option('-f, --file <html_file>', 'Path to index.html')
+      .option('-u, --url <url>', 'URL to index.html')
+      .option('-c, --checks <check_file>', 'Path to check.json')
+
+//      .option('-u, --url <html_file>', 'Link to url', clone(assertFileExists), URL_DEFAULT)
       .parse(process.argv);
 //    var checkJson = checkHtmlFile(program.file, program.checks);
 //    var outJson = JSON.stringify(checkJson, null, 4);
 //    console.log(outJson);
 
     if(program.url){
-	var checkJson = checkUrl(program.url, program.checks);
-	var outJson = JSON.stringify(checkJson,null,4);
-	console.log(outJson);
+//	var checkJson = checkUrl(program.url, program.checks);
+//	var outJson = JSON.stringify(checkJson,null,4);
+//	console.log(outJson);
+	checkUrl(program.url, program.checks);
     }else{
 	var checkJson = checkHtmlFile(program.file, program.checks);
 	var outJson = JSON.stringify(checkJson,null,4);
