@@ -29,13 +29,13 @@ var CHECKSFILE_DEFAULT = "checks.json";
 
 var assertFileExists = function(infile) {
     var instr = infile.toString();
-    console.log('%s',instr);
+//    console.log('%s',instr);
     if(!fs.existsSync(instr)) {
 	console.log("%s does not exist. Exiting.", instr);
 	process.exit(1); // http;//nodejs.org/api/process.html#process_process_exit_code
     }
 //    check_json_after_get(instr, 'file');
-//    return instr;
+   return instr;
 };
 
 var getUrl = function(apiurl) {
