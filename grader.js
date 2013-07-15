@@ -40,7 +40,7 @@ var assertFileExists = function(infile) {
 var getUrl = function(apiurl){
     rest.get(apiurl).on('complete',function(result){
 	if(result instanceof Error){
-	    console.log('Error: ' L result.message);
+	    console.log('Error: ' + result.message);
 	    process.exit(1);
 	} else{ 
 	    program.file = 'tmp.txt';
