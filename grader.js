@@ -33,12 +33,12 @@ var assertFileExists = function(infile) {
 	console.log("%s does not exist. Exiting.", instr);
 	process.exit(1); // http;//nodejs.org/api/process.html#process_process_exit_code
     }
-    check_json_after_get(instr,'file');
+    check_json_after_get(instr, 'file');
 //    return instr;
 };
 
 var getUrl = function(apiurl){
-    rest.get(apiurl).on('complete',function(result){
+    rest.get(apiurl).on('complete', function(result){
 	if(result instanceof Error){
 	    console.log('Error: ' + result.message);
 	    process.exit(1);
@@ -48,7 +48,7 @@ var getUrl = function(apiurl){
 	    check_json_after_get(result, 'url');
 	}
     })
-}
+};
 		     
 var cheerioHtmlFile = function(htmlfile){
     return cheerio.load(fs.readFileSync(htmlfile));
