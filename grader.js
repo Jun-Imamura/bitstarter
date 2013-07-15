@@ -21,6 +21,7 @@ references:
 */
 
 var fs = require('fs');
+var rest = require('restler');
 var program = require('commander');
 var cheerio = require('cheerio');
 var HTMLFILE_DEFAULT = "index.html";
@@ -69,7 +70,7 @@ var checkHtmlFile = function(htmlfile, checksfile){
     return out;
 };
 
-var check_json_after_get = function(result,type){
+var check_json_after_get = function(result, type){
     var checkJson = checkHtmlFile(program.file, program.checks)
     console.log(JSON.stringify(checkJson, null, 4));
 };
